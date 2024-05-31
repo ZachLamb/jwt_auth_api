@@ -3,9 +3,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  post 'auth/register', to: 'auth#register'
-  post 'auth/login', to: 'auth#login'
-  get 'auth/validate_token', to: 'auth#validate_token'
-  get 'auth/refresh_token', to: 'auth#refresh_token'
-  get 'secure_data', to: 'secure_data#show'
+  Rails.application.routes.draw do
+    post 'api/register', to: 'auth#register'
+    post 'api/login', to: 'auth#login'
+    get 'api/validate', to: 'auth#validate_token'
+    get 'api/refresh', to: 'auth#refresh_token'
+    get 'secure_data', to: 'secure_data#show'
+    get 'api/widgets', to: 'widgets#index'
+  end
+
 end
