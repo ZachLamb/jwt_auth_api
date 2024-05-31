@@ -1,4 +1,8 @@
 class AuthController < ApplicationController
+  # disable protection for Cross-Site Request Forgery (CSRF)
+  # in order to use Postman for validation
+  skip_before_action :verify_authenticity_token
+
   before_action :authorize_request, only: [:validate_token, :refresh_token]
 
   def validate_token
